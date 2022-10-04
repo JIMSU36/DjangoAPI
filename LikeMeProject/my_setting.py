@@ -14,14 +14,15 @@ def get_secret(setting, secrets=secrets):
 
 SECRET_KEY = get_secret("SECRET_KEY")
 
+
 #my_settings.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', #1
-        'NAME': 'likeme', #2
-        'USER': 'root', #3                      
-        'PASSWORD': 'LikeMeDB1!',  #4              
-        'HOST': '127.0.0.1',   #5                
+        'NAME': get_secret("database-name"), #2
+        'USER': get_secret("database-user"), #3                      
+        'PASSWORD': get_secret("database-pw"),  #4              
+        'HOST': get_secret("database-host"),   #5                
         'PORT': '3306', #6
     }
 }
