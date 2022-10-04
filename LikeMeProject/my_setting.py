@@ -10,3 +10,4 @@ DATABASES = {
     }
 }
 SECRET_KEY ='django-insecure-+qzl*9(omqwlmtypd6ks+_h2271h!%u@%3ht+6v#7n9=@razzo'
+test = 'change test'
