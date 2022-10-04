@@ -1,3 +1,19 @@
+import json
+
+from django.core.exceptions import ImproperlyConfigured
+
+with open("secret.json") as f:
+    secrets = json.loads(f.read())
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = f"Set the {setting} enviroment variable"
+        raise ImproperlyConfigured(error_msg)
+
+SECRET_KEY = get_secret("SECRET_KEY")
+
 #my_settings.py
 DATABASES = {
     'default': {
@@ -9,5 +25,3 @@ DATABASES = {
         'PORT': '3306', #6
     }
 }
-SECRET_KEY ='django-insecure-+qzl*9(omqwlmtypd6ks+_h2271h!%u@%3ht+6v#7n9=@razzo'
-test = 'change test'
